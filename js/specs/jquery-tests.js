@@ -1,4 +1,4 @@
-define(['exports', 'lib/browser'], function (exports, Browser) {
+define(['exports'], function (exports) {
     var timeoutMaxInMs = 10000;
 
     function createTests() {

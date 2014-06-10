@@ -1,6 +1,6 @@
 define([
     'chai',
-    'lib/browser',
+    'automation/browser',
     'specs/extjs-tests',
     'specs/jquery-tests'
 ], function (chai, Browser, extjsTests, jqueryTests) {

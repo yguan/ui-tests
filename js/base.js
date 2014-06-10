@@ -11,7 +11,12 @@
     };
 
     //Now load code.
-    require(['js/requirejs-config', 'js/lib/jquery', 'js/lib/mocha'], function () {
+    require([
+        'js/requirejs-config',
+        'js/lib/jquery',
+        'js/lib/mocha',
+        'js/lib/simulate'
+    ], function () {
         $('body').append('<div id="mocha" style="z-index:10000; background-color:white;width:100%;height:100%;position: absolute;top:0;margin: 0;"></div>');
         window.mocha.ui('bdd');
         window.mocha.reporter('html');

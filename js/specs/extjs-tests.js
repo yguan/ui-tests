@@ -1,4 +1,4 @@
-define(['exports'], function (exports, Browser) {
+define(['exports'], function (exports) {
     var timeoutMaxInMs = 10000;
 
     function createTests() {
@@ -9,10 +9,7 @@ define(['exports'], function (exports, Browser) {
 
                 browser
                     .openWindow('http://docs.sencha.com/extjs/4.2.2/')
-                    .waitAndSelectElement('doctabs', function (doctabs) {
-                        var overviewTab = doctabs.down('.doctab.overview.classes');
-                        overviewTab.dom.click();
-                    })
+                    .waitAndClick('.doctab.overview.classes')
                     .execute(function (win, next) {
                         win.location.hash.should.equal('#!/api');
                         done();

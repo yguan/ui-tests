@@ -8,11 +8,11 @@ var config = {
     testScriptServer: {
         port: 9000,
         url: 'http://localhost:9000/',
-        appDir: 'C:\\Users\\coding\\Documents\\GitHub\\browser-tests\\cross-domain\\'
+        appDir: 'C:\\Users\\coding\\Documents\\GitHub\\ui-tests\\'
     },
     jquerySiteUrl: 'http://www.jquery.com/',
     extjsSiteUrl: 'http://docs.sencha.com/extjs/4.2.2/',
-    runExtjsTests: false
+    runExtjsTests: true
 };
 
 module.exports = config;

@@ -5,32 +5,30 @@ requirejs.config({
     //baseUrl: 'js/lib',
     paths: {
 		lib: 'js/lib',
-
-		/* the dependencies below belong to tests*/
+		automation: 'js/automation',
+        Simulate: 'js/lib/simulate',
 		mocha: 'js/lib/mocha',
 		chai: 'js/lib/chai',
-		jquery: 'js/lib/jquery',
 		specs: 'js/specs'
     },
 
     // doesn't seem to be needed
     shim: {
-        jquery: {
-            exports: '$'
-        },
         mocha: {
             exports: 'mocha'
         },
         chai: {
             exports: 'chai'
+        },
+        Simulate: {
+            exports: 'Simulate'
         }
     },
 	dir: '../../www-built',
     modules: [
         {
             //module names are relative to baseUrl/paths config
-            name: 'specs/all',
-			exclude: ['jquery']
+            name: 'specs/all'
         }
     ]
 });

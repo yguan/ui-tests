@@ -1,10 +1,10 @@
 /*jslint nomen: true*/
-/*global $,define,require,_ */
+/*global $,define,require,_,Simulate */
 
 define([
     'exports',
-    'lib/async-chain',
-    'lib/wait'
+    'automation/async-chain',
+    'automation/wait'
 ], function (exports, asyncChain, wait) {
     'use strict';
 
@@ -21,19 +21,20 @@ define([
     /*
      * Change this function to have use different query
      */
-    function selectElement(selector, win) {
+    function selectElements(selector, win) {
+        var elements;
         if (win.$) {
-            return win.$(selector);
+            elements = win.$(selector);
         }
         if (win.Ext) {
-            return win.Ext.get(selector);
+            elements = win.Ext.DomQuery.select(selector);
         }
-        return null;
+        return (elements && elements.length > 0) ? elements : null;
     }
 
     function elementExist(selector, win) {
-        var element = selectElement(selector, win);
-        if (element) {
+        var elements = selectElements(selector, win);
+        if (elements) {
             return true;
         }
         return false;
@@ -51,7 +52,7 @@ define([
             me.chain = config.chain || asyncChain.create();
 
             me.defaultTimeoutInMs = config.defaultTimeoutInMs || {
-                elementExist: 3000,
+                elementExist: 5000,
                 implicitWait: 100
             };
             return me;
@@ -100,11 +101,20 @@ define([
                 waitFor(function () {
                     return elementExist(selector, me.currentWindow);
                 }, function () {
-                    onElementFound(selectElement(selector, me.currentWindow));
+                    onElementFound(selectElements(selector, me.currentWindow));
                     if (next) {
                         next();
                     }
                 }, timeoutMessage, me.defaultTimeoutInMs.elementExist);
+            });
+
+            return me;
+        },
+        waitAndClick: function (selector) {
+            var me = this;
+
+            me.waitAndSelectElement(selector, function (elements) {
+                Simulate.click(elements[0]);
             });
 
             return me;
