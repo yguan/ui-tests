@@ -10,6 +10,7 @@ define(['exports'], function (exports) {
                 browser
                     .openWindow('http://docs.sencha.com/extjs/4.2.2/')
                     .waitAndClick('.doctab.overview.classes')
+                    .typeValue('#search-field input', 'chart')
                     .execute(function (win, next) {
                         win.location.hash.should.equal('#!/api');
                         done();

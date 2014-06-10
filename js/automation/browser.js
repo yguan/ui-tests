@@ -119,6 +119,16 @@ define([
 
             return me;
         },
+        typeValue: function (selector, value) {
+            var me = this;
+
+            me.waitAndSelectElement(selector, function (elements) {
+                elements[0].value = value;
+                Simulate.event(elements[0], 'keyup');
+            });
+
+            return me;
+        },
         execute: function (fn) {
             var me = this;
             me.chain.add(function (next) {
