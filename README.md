@@ -23,7 +23,7 @@ You can find the details [here](http://yguan.github.io/repos/writings/#test-auto
    * `script-injector.js` contains the code to inject test code, and it can be run in a brower's developer tools' console.
    * `test-runner.js` is the node.js code that starts a server to host test code, starts Selenium server, uses WebDriver to open a browser window that points to the site under test, and injects the test code to the browser window.
 
-## Run the Cross-domain Tests Automatically
+## Run the Tests Automatically
 
 Here are the steps;
 
